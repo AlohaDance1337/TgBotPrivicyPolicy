@@ -4,6 +4,8 @@ from core.types.states import DialogUse
 from aiogram.fsm.context import FSMContext
 from core.keyboards.inline import create_doc
 from db.db import Database
+from core.keyboards.inline import premium_button
+from core.filters.filters import PremiumFilter
 
 import os
 import requests
@@ -12,16 +14,20 @@ router = Router()
 
 db = Database()
 
-WEB_APP_URL = os.environ.get('WEB_APP_URL', 'https://privatizerbot.space')
+WEB_APP_URL = 'http://192.168.0.101:8000'
 
-@router.callback_query(F.data=='create_terms_of_use',)
+@router.callback_query((F.data=='create_terms_of_use'), PremiumFilter())
+async def premium_buttons(call:CallbackQuery):
+     await call.message.answer(text="",reply_markup=premium_button)
+
+@router.callback_query(F.data=='create_terms_of_use')
 async def select_TermOfUse(call: CallbackQuery, state: FSMContext):
     await state.set_state(DialogUse.terms_of_use)
     await call.message.answer(text='Введите имя разаботчика:')
 
 @router.message(DialogUse.terms_of_use, F.text)
 async def get_message(message: Message, state: FSMContext):
-    await state.update_data(dev_username=message.text)
+    await state.update_data(dev_username=[message.text,message.from_user.id])
     await message.reply(text='Введите название приложения')
     await state.set_state(DialogUse.app_name)
 
@@ -36,11 +42,12 @@ async def get_message(message: Message, state:FSMContext):
     await state.update_data(email=message.text)
     data = await state.get_data()
     email = data["email"]
-    dev_username = data["dev_username"]
+    dev_username = data["dev_username"][0]
     app_name = data["app_name"]
+    chat_id=data["dev_username"][1]
     try:
         response = requests.post(
-            f'{WEB_APP_URL}/create_document/terms_of_use?dev_username={dev_username}&app_name={app_name}&email={email}')
+            f'{WEB_APP_URL}/create_document/terms_of_use?dev_username={dev_username}&app_name={app_name}&email={email}&user_id={chat_id}')
         try:
                 response.raise_for_status()
                 response_json = response.json()
@@ -55,9 +62,11 @@ async def get_message(message: Message, state:FSMContext):
     except:
         pass
     document_url = f'{WEB_APP_URL}{response_json["url"]}'
-    await message.reply(f"Ваша ссылка на Term Of Use: {document_url}")
-    await message.reply("Желаете создать Terms of Use?", reply_markup=create_doc)
+    print(response_json)
+    await message.reply(f"Ваша ссылка на Term Of Use1: {document_url}")
+    await message.reply("Желаете создать Privacy policy?", reply_markup=create_doc)
     await state.set_state(DialogUse.privacy_use)
+    
 
 @router.callback_query(DialogUse.privacy_use,F.data =="Yes")
 async def send_Use(call: CallbackQuery, state:FSMContext):
@@ -65,9 +74,10 @@ async def send_Use(call: CallbackQuery, state:FSMContext):
     email = data["email"]
     dev_username = data["dev_username"]
     app_name = data["app_name"]
+    chat_id=data["dev_username"][1]
     try:
         response = requests.post(
-            f'{WEB_APP_URL}/create_document/privacy_policy?dev_username={dev_username}&app_name={app_name}&email={email}')
+            f'{WEB_APP_URL}/create_document/privacy_policy?dev_username={dev_username}&app_name={app_name}&email={email}&user_id={chat_id}')
         try:
                 response.raise_for_status()
                 response_json = response.json()

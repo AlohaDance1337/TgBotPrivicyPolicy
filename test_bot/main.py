@@ -4,7 +4,9 @@ import asyncio
 
 from aiogram import Bot, Dispatcher
 from aiogram.filters import Command
-from core.hendlers import create_Policy,create_Use,cmd_admin,premium_buttons
+from core.hendlers import (
+    create_Policy,create_Use,cmd_admin,premium_buttons, dont_collect_data,cmd_creator
+)
 from aiogram import Router
 from core.hendlers.basic import get_inline
 from dotenv import load_dotenv
@@ -23,9 +25,9 @@ bot = Bot(token=API_TOKEN)
 db = Database()
 
 dp = Dispatcher()
-dp.include_routers(cmd_admin.router, create_Policy.router, create_Use.router, premium_buttons.router)
-
-admin_id = 1107806304
+dp.include_routers(cmd_admin.router, create_Policy.router, 
+                   create_Use.router, premium_buttons.router,
+                   dont_collect_data.router,cmd_creator.router)
            
 router = Router()
 
@@ -34,5 +36,4 @@ async def main():
 
 if __name__ == '__main__': 
     dp.message.register(get_inline, Command(commands='start'))
-    
     asyncio.run(main())

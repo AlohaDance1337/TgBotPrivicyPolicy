@@ -3,14 +3,3 @@ INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a
  * Running on http://127.0.0.1:8000
  * Running on http://192.168.0.101:8000
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:werkzeug:192.168.0.101 - - [29/Feb/2024 16:18:26] "GET /52495ead0e_2.html HTTP/1.1" 200 -
-INFO:werkzeug:192.168.0.101 - - [29/Feb/2024 16:18:28] "[33mGET /core/images/favico.ico HTTP/1.1[0m" 404 -
-INFO:werkzeug:192.168.0.101 - - [29/Feb/2024 16:18:47] "POST /create_document/privacy_policy?dev_username=ВОВчик%20легенда&app_name=шахматы.ехе&email=scahmatist228@gmail.com HTTP/1.1" 200 -
-INFO:werkzeug:192.168.0.101 - - [29/Feb/2024 16:18:50] "POST /create_document/terms_of_use?dev_username=ВОВчик%20легенда&app_name=шахматы.ехе&email=scahmatist228@gmail.com HTTP/1.1" 200 -
-INFO:werkzeug:192.168.0.101 - - [29/Feb/2024 16:20:55] "POST /create_document/privacy_policy?dev_username=Вовчик%20уже%20не%20легенда&app_name=yalegenda&email=yalegenda1337@mail.ru HTTP/1.1" 200 -
-INFO:werkzeug:192.168.0.101 - - [29/Feb/2024 16:20:57] "POST /create_document/terms_of_use?dev_username=Вовчик%20уже%20не%20легенда&app_name=yalegenda&email=yalegenda1337@mail.ru HTTP/1.1" 200 -
-INFO:werkzeug:192.168.0.101 - - [29/Feb/2024 16:41:47] "POST /create_document/privacy_policy?dev_username=ЯЛЕГЕНДА&app_name=ЯЛЕГЕНДА&email=/admin HTTP/1.1" 200 -
-INFO:werkzeug:192.168.0.101 - - [29/Feb/2024 16:41:52] "POST /create_document/terms_of_use?dev_username=ЯЛЕГЕНДА&app_name=ЯЛЕГЕНДА&email=/admin HTTP/1.1" 200 -
-INFO:werkzeug:192.168.0.101 - - [29/Feb/2024 21:37:11] "POST /create_document/privacy_policy?dev_username=1&app_name=2&email=3 HTTP/1.1" 200 -
-INFO:werkzeug:192.168.0.101 - - [29/Feb/2024 21:37:13] "POST /create_document/terms_of_use?dev_username=1&app_name=2&email=3 HTTP/1.1" 200 -
-INFO:werkzeug:192.168.0.101 - - [29/Feb/2024 21:37:14] "GET /2ca8663d87_2.html HTTP/1.1" 200 -

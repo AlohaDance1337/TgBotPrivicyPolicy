@@ -13,7 +13,8 @@ class Database:
                     chat_id INTEGER NOT NULL,
                     date TEXT NOT NULL,
                     premium INTEGER DEFAULT 0,
-                    admin INTEGER DEFAULT 0
+                    admin INTEGER DEFAULT 0,
+                    creator INTEGER DEFAULT 0
                     )
                     ''')
         self.conn.commit()
@@ -38,7 +39,7 @@ class Database:
             self.conn.commit()
 
     def get_status(self, chat_id:int=None):
-        return self.curs.execute("SELECT premium, admin FROM Users WHERE chat_id=?", (chat_id,)).fetchall()
+        return self.curs.execute("SELECT premium, admin,creator FROM Users WHERE chat_id=?", (chat_id,)).fetchall()
 
     def take_away_status(self, chat_id:int=None,status:str = None):
         if status == "take_away_premium":
@@ -47,8 +48,11 @@ class Database:
         if status == "take_away_admin":
             self.curs.execute('UPDATE Users SET admin=0 WHERE chat_id=?',(chat_id,))
             self.conn.commit()
+        if status == "take_away_creator":
+            self.curs.execute('UPDATE Users SET creator=0 WHERE chat_id=?',(chat_id,))
+            self.conn.commit()            
     
-    def get_user(self, chat_id:int=None):
+    def get_user(self, chat_id:int=None)->list[int]:
        return self.curs.execute("SELECT username FROM Users WHERE chat_id=?", (chat_id,)).fetchall()
        
     def get_users(self)-> list:
@@ -62,6 +66,7 @@ class Database:
         for i in self.curs.execute("SELECT chat_id FROM Users WHERE admin=1").fetchall():
             lst.append(i[0])
         return lst
+    
     def get_last_10(self,):
         len_db = len(db.get_users())
         if len_db<=10:
@@ -69,7 +74,12 @@ class Database:
         if len_db>10:
             a = len_db-10
             return db.get_users()[a:len_db]
-
+        
+    def give_status_creator(self,chat_id:str=None):
+        self.curs.execute('UPDATE Users SET creator=1 WHERE chat_id=?',(chat_id,))
+    
+        
 db = Database()
 
-print(db.get_last_10())
+
+print(db.get_status(1145899837)[0][2]==1)

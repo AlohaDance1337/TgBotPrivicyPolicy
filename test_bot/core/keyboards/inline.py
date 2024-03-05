@@ -3,8 +3,7 @@ select_Button = InlineKeyboardMarkup(inline_keyboard=[
     [
         InlineKeyboardButton(
             text="Создать Privacy Policy",
-            callback_data = "create_privacy_policy",
-            
+            callback_data = "create_privacy_policy", 
         )
 
     ],
@@ -13,7 +12,11 @@ select_Button = InlineKeyboardMarkup(inline_keyboard=[
             text = "Создать Terms of Use", 
             callback_data = "create_terms_of_use"
             )
-    ],
+    ]
+]
+)
+
+premium_button = InlineKeyboardMarkup(inline_keyboard=[
     [
         InlineKeyboardButton(
             text = "Собирать данные",
@@ -26,8 +29,8 @@ select_Button = InlineKeyboardMarkup(inline_keyboard=[
             callback_data="dont_collect_data"
         )
     ]
-]
-)
+])
+
 create_doc = InlineKeyboardMarkup(inline_keyboard=[
     [
         InlineKeyboardButton(
@@ -72,6 +75,36 @@ admin_buttons = InlineKeyboardMarkup(inline_keyboard=
         InlineKeyboardButton(
             text = "Статистика за последние 10 человек",
             callback_data="statistics_for_10"
+        )
+    ]
+])
+
+doc_buttons = InlineKeyboardMarkup(inline_keyboard=[
+    [
+        InlineKeyboardButton(
+            text="Privacy Policy",
+            callback_data="privacy_policy"
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            text="Terms of Use",
+            callback_data="term_of_use"
+        )
+    ]
+])
+
+creator_buttons = InlineKeyboardMarkup(inline_keyboard=[
+    [
+        InlineKeyboardButton(
+            text="Выдать админ",
+            callback_data="give_admin"
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            text="Забрать админ",
+            callback_data="take_away_admin"
         )
     ]
 ])

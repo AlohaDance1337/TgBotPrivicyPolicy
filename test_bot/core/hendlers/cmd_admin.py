@@ -1,19 +1,19 @@
 from aiogram.types import Message, CallbackQuery
 from aiogram import Bot,Router,F
-from aiogram.filters import Command
+from core.keyboards.inline import admin_buttons
 from aiogram.fsm.context import FSMContext
+from aiogram.filters import Command
 from core.keyboards.inline import admin_buttons
 from db.db import Database
 from core.filters.filters import AdminFilter
-from core.types.states import UpdateStatus_Premium,UpdateStatus_Admin
+from core.types.states import UpdateStatus_Premium
 
 router = Router()
 
 db = Database()
 
 
-
-@router.message(F.text, Command("admin"),AdminFilter())
+@router.message(AdminFilter(),(F.text.lower() == "admin")|(F.text.lower() == "/admin"))
 async def admin_button(message:Message):
     await message.answer(text="Вы вызвали чёто-там", reply_markup=admin_buttons)
 
@@ -45,4 +45,4 @@ async def give_premium(message:Message, bot:Bot):
 
 @router.callback_query(F.data == "statistics_for_10")
 async def statistics_for_10(call:CallbackQuery):
-    await call.message.answer(text = f"Последние пользователи, которые зарегистрировали:{','.join(db.get_last_10())}")
+    await call.message.answer(text = f'Последние пользователи, которые зарегистрировали:{",".join(db.get_last_10())}')

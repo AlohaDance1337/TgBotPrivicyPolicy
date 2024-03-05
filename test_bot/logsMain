@@ -1,0 +1,9 @@
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @OhMybaboBot id=6592777773 - 'Bot1'
+INFO:aiogram.event:Update id=196344081 is handled. Duration 250 ms by bot id=6592777773
+INFO:aiogram.event:Update id=196344082 is handled. Duration 172 ms by bot id=6592777773
+INFO:aiogram.event:Update id=196344083 is handled. Duration 265 ms by bot id=6592777773
+INFO:aiogram.event:Update id=196344084 is handled. Duration 297 ms by bot id=6592777773
+INFO:aiogram.event:Update id=196344085 is handled. Duration 264 ms by bot id=6592777773
+INFO:aiogram.event:Update id=196344086 is handled. Duration 94 ms by bot id=6592777773
+INFO:aiogram.event:Update id=196344087 is handled. Duration 94 ms by bot id=6592777773
