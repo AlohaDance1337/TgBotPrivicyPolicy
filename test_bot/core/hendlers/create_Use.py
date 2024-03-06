@@ -14,7 +14,7 @@ router = Router()
 
 db = Database()
 
-WEB_APP_URL = 'http://192.168.0.101:8000'
+WEB_APP_URL = os.environ.get('WEB_APP_URL', 'https://privatizerbot.space')
 
 @router.callback_query((F.data=='create_terms_of_use'), PremiumFilter())
 async def premium_buttons(call:CallbackQuery):
