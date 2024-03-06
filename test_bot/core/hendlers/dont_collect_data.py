@@ -13,8 +13,7 @@ router = Router()
 
 db = Database()
 
-WEB_APP_URL = 'http://192.168.0.101:8000'
-
+WEB_APP_URL = os.environ.get('WEB_APP_URL', 'https://privatizerbot.space')
 
 @router.callback_query(F.data == "dont_collect_data")
 async def if_no(call: CallbackQuery):
