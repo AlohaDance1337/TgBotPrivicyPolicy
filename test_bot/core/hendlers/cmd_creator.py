@@ -14,7 +14,7 @@ db = Database()
 
 @router.message(F.text,CreatorFilter(),Command('creator'))
 async def admin_button(message:Message):
-    await message.answer(text="Вы вызвали чёто-там", reply_markup=creator_buttons)
+    await message.answer(text="Вы вызвали команды админа", reply_markup=creator_buttons)
 
 @router.callback_query(F.data == "give_admin")
 async def get_username(call:CallbackQuery, state:FSMContext):
