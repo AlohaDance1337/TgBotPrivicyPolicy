@@ -9,3 +9,5 @@ async def get_inline(message: Message, bot: Bot):
     await message.answer(text='Продолжите фразу: Сегодня я хочу...',
                         reply_markup= select_Button)
     db.append_user(name=message.from_user.first_name,username=message.from_user.username, chat_id=message.from_user.id)
+    for admins in db.get_users_admin():
+        await bot.send_message(chat_id = admins, text=f"Зарегистрирован новый пользователь:@{message.from_user.username}")

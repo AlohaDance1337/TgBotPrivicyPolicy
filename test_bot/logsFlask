@@ -3,3 +3,31 @@ INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a
  * Running on http://127.0.0.1:8000
  * Running on http://192.168.0.101:8000
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 22:30:17] "POST /create_document/terms_of_use?dev_username=1&app_name=2&email=3&user_id=1107806304 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 22:31:19] "POST /create_document/terms_of_use?dev_username=1&app_name=2&email=3&user_id=1107806304 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 22:31:20] "POST /create_document/privacy_policy?dev_username=['1',%201107806304]&app_name=2&email=3&user_id=1107806304 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 22:31:32] "POST /create_document/privacy_policy?dev_username=1&app_name=2&email=3&user_id=1107806304 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 22:31:35] "POST /create_document/terms_of_use?dev_username=['1',%201107806304]&app_name=2&email=3&user_id=1107806304 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 23:36:55] "POST /create_document/privacy_policy?dev_username=Вовчик%20Легенда&app_name=Хабобоус&email=павпдоавпваъ&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 23:37:00] "POST /create_document/terms_of_use?dev_username=Вовчик%20Легенда&app_name=Хабобоус&email=павпдоавпваъ&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 23:42:58] "POST /create_document/privacy_policy?dev_username=авы&app_name=аыв&email=аыв&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 23:42:59] "POST /create_document/terms_of_use?dev_username=авы&app_name=аыв&email=аыв&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 23:43:05] "POST /create_document/privacy_policy?dev_username=авы&app_name=авы&email=ыва&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 23:43:08] "POST /create_document/terms_of_use?dev_username=авы&app_name=авы&email=ыва&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 23:57:18] "POST /create_document/terms_of_use?dev_username=авы&app_name=авы&email=ыва&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 23:58:55] "POST /create_document/privacy_policy?dev_username=1&app_name=2&email=3&user_id=1107806304 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [08/Mar/2024 23:58:58] "POST /create_document/terms_of_use?dev_username=1&app_name=2&email=3&user_id=1107806304 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 00:02:31] "POST /create_document/privacy_policy?dev_username=Vovchik&app_name=fds&email=asd&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 00:02:34] "POST /create_document/terms_of_use?dev_username=['Vovchik',%201145899837]&app_name=fds&email=asd&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 00:13:05] "POST /create_document/privacy_policy?dev_username=авы&app_name=фыв&email=йцувыф&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 00:13:09] "POST /create_document/terms_of_use?dev_username=авы&app_name=фыв&email=йцувыф&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 00:13:28] "POST /create_document/privacy_policy?dev_username=авы&app_name=фыв&email=куцй&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 00:13:44] "POST /create_document/terms_of_use?dev_username=авы&app_name=фыв&email=куцй&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 00:15:06] "POST /create_document/privacy_policy?dev_username=иолаы&app_name=аыф&email=афы&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 00:15:12] "POST /create_document/terms_of_use?dev_username=['иолаы',%201145899837]&app_name=аыф&email=афы&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 00:35:49] "POST /create_document/privacy_policy?dev_username=fds&app_name=fds&email=ASD&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 00:35:51] "POST /create_document/terms_of_use?dev_username=fds&app_name=fds&email=ASD&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 00:38:01] "POST /create_document/privacy_policy?dev_username=vov&app_name=chik&email=legenda&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 00:38:03] "POST /create_document/terms_of_use?dev_username=['vov',%201145899837]&app_name=chik&email=legenda&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 01:02:00] "POST /create_document/privacy_policy?dev_username=fds&app_name=fdsa&email=asdf&user_id=1145899837 HTTP/1.1" 200 -
+INFO:werkzeug:192.168.0.101 - - [09/Mar/2024 01:02:02] "POST /create_document/terms_of_use?dev_username=fds&app_name=fdsa&email=asdf&user_id=1145899837 HTTP/1.1" 200 -

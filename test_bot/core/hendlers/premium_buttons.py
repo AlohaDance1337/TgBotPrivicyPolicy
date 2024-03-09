@@ -3,9 +3,9 @@ from aiogram.fsm.context import FSMContext
 from core.filters.filters import PremiumFilter
 from db.db import Database
 from aiogram.types import CallbackQuery
-from core.types.states import DialogUsePremium,DialogPolicyPremium
+from core.types.states import DialogUsePremium
 from aiogram.types import Message
-from core.keyboards.inline import create_doc, doc_buttons
+from core.keyboards.inline import create_doc
 
 import requests
 

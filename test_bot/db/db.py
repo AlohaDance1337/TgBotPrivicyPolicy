@@ -25,7 +25,7 @@ class Database:
             self.conn.commit()
 
     def get_users_admin(self)-> list:
-        return [item[0] for item in self.curs.execute("SELECT admin FROM Users").fetchall()]
+        return [item[0] for item in self.curs.execute("SELECT chat_id FROM Users WHERE admin=1").fetchall()]
     
     def get_users_premium(self)-> list:
         return [item[0] for item in self.curs.execute("SELECT premium FROM Users").fetchall()]
@@ -55,31 +55,28 @@ class Database:
     def get_user(self, chat_id:int=None)->list[int]:
        return self.curs.execute("SELECT username FROM Users WHERE chat_id=?", (chat_id,)).fetchall()
        
-    def get_users(self)-> list:
-        return [item[0] for item in self.curs.execute("SELECT username FROM Users").fetchall()]
+    def get_users_username(self)-> list:
+        return [item for item in self.curs.execute("SELECT username,date FROM Users").fetchall()]
+    
+    def get_users_chats_id(self)-> list:
+        return [item[0] for item in self.curs.execute("SELECT chat_id FROM Users").fetchall()]
     
     def get_statistics(self,):
         return [item for item in self.curs.execute("SELECT * FROM Users").fetchall()]
     
-    def get_admins(self,):
-        lst = []
-        for i in self.curs.execute("SELECT chat_id FROM Users WHERE admin=1").fetchall():
-            lst.append(i[0])
-        return lst
     
     def get_last_10(self,):
-        len_db = len(db.get_users())
+        len_db = len(db.get_users_username())
+        user_names = db.get_users_username()
         if len_db<=10:
-            return db.get_users()
+            return user_names
         if len_db>10:
             a = len_db-10
-            return db.get_users()[a:len_db]
-        
+            return user_names[a:len_db]
+
     def give_status_creator(self,chat_id:str=None):
         self.curs.execute('UPDATE Users SET creator=1 WHERE chat_id=?',(chat_id,))
-    
         
 db = Database()
 
-
-print(db.get_status(1145899837)[0][2]==1)
+print(db.get_users_admin())

@@ -18,7 +18,7 @@ WEB_APP_URL = 'http://192.168.0.101:8000'
 
 @router.callback_query(F.data=='create_privacy_policy', PremiumFilter())
 async def premium_buttons(call:CallbackQuery):
-     await call.message.answer(text="dadsa",reply_markup=premium_button)
+     await call.message.answer(text="Создать премиум версию файла?",reply_markup=premium_button)
 
 @router.callback_query(F.data=='create_privacy_policy')
 async def select_PrivacyPolicy(call: CallbackQuery, state: FSMContext):

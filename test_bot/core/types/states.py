@@ -43,3 +43,9 @@ class UpdateStatus_Admin(StatesGroup):
 class UpdateStatus_Premium(StatesGroup):
     take = State()
     give = State()
+
+class StateMailing(StatesGroup):
+    mailing=State()
+
+class Admin(StatesGroup):
+    admin_state=State()

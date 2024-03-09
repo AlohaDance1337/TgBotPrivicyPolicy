@@ -79,21 +79,6 @@ admin_buttons = InlineKeyboardMarkup(inline_keyboard=
     ]
 ])
 
-doc_buttons = InlineKeyboardMarkup(inline_keyboard=[
-    [
-        InlineKeyboardButton(
-            text="Privacy Policy",
-            callback_data="privacy_policy"
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            text="Terms of Use",
-            callback_data="term_of_use"
-        )
-    ]
-])
-
 creator_buttons = InlineKeyboardMarkup(inline_keyboard=[
     [
         InlineKeyboardButton(

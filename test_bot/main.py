@@ -5,7 +5,10 @@ import asyncio
 from aiogram import Bot, Dispatcher
 from aiogram.filters import Command
 from core.hendlers import (
-    create_Policy,create_Use,cmd_admin,premium_buttons, dont_collect_data,cmd_creator
+    create_Policy,create_Use,
+    cmd_admin,premium_buttons, 
+    dont_collect_data,cmd_creator,
+    create_Mailing
 )
 from aiogram import Router
 from core.hendlers.basic import get_inline
@@ -27,7 +30,9 @@ db = Database()
 dp = Dispatcher()
 dp.include_routers(cmd_admin.router, create_Policy.router, 
                    create_Use.router, premium_buttons.router,
-                   dont_collect_data.router,cmd_creator.router)
+                   dont_collect_data.router,cmd_creator.router,
+                   create_Mailing.router
+                   )
            
 router = Router()
 

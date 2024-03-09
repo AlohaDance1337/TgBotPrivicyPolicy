@@ -1,4 +1,4 @@
-from aiogram import Bot, Router, F
+from aiogram import Router, F
 from aiogram.types import CallbackQuery,Message
 from core.types.states import DialogUse
 from aiogram.fsm.context import FSMContext
@@ -16,14 +16,14 @@ db = Database()
 
 WEB_APP_URL = 'http://192.168.0.101:8000'
 
-@router.callback_query((F.data=='create_terms_of_use'), PremiumFilter())
+@router.callback_query(F.data=='create_terms_of_use', PremiumFilter())
 async def premium_buttons(call:CallbackQuery):
-     await call.message.answer(text="",reply_markup=premium_button)
+     await call.message.answer(text="Создать премиум версию файла?",reply_markup=premium_button)
 
 @router.callback_query(F.data=='create_terms_of_use')
 async def select_TermOfUse(call: CallbackQuery, state: FSMContext):
     await state.set_state(DialogUse.terms_of_use)
-    await call.message.answer(text='Введите имя разаботчика:')
+    await call.message.answer(text='Введите имя разработчика:')
 
 @router.message(DialogUse.terms_of_use, F.text)
 async def get_message(message: Message, state: FSMContext):
@@ -63,7 +63,7 @@ async def get_message(message: Message, state:FSMContext):
         pass
     document_url = f'{WEB_APP_URL}{response_json["url"]}'
     print(response_json)
-    await message.reply(f"Ваша ссылка на Term Of Use1: {document_url}")
+    await message.reply(f"Ваша ссылка на Term Of Use: {document_url}")
     await message.reply("Желаете создать Privacy policy?", reply_markup=create_doc)
     await state.set_state(DialogUse.privacy_use)
     
