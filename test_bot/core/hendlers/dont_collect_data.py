@@ -11,11 +11,7 @@ router = Router()
 
 db = Database()
 
-<<<<<<< HEAD
-WEB_APP_URL = 'http://192.168.0.101:8000'
-=======
 WEB_APP_URL = os.environ.get('WEB_APP_URL', 'https://privatizerbot.space')
->>>>>>> 97e91ba75dccee59eaf2e6b1040330f0176c1592
 
 @router.callback_query(F.data == "dont_collect_data")
 async def select_PrivacyPolicy(call: CallbackQuery, state: FSMContext):
