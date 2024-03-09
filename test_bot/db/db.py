@@ -76,10 +76,3 @@ class Database:
 
     def give_status_creator(self,chat_id:str=None):
         self.curs.execute('UPDATE Users SET creator=1 WHERE chat_id=?',(chat_id,))
-<<<<<<< HEAD
-        
-db = Database()
-
-print(db.get_users_admin())
-=======
->>>>>>> 41713a887e74f7f5bf1f135421909220354e60a0
