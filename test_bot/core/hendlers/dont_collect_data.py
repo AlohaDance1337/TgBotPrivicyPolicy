@@ -11,7 +11,11 @@ router = Router()
 
 db = Database()
 
+<<<<<<< HEAD
 WEB_APP_URL = 'http://192.168.0.101:8000'
+=======
+WEB_APP_URL = os.environ.get('WEB_APP_URL', 'https://privatizerbot.space')
+>>>>>>> 97e91ba75dccee59eaf2e6b1040330f0176c1592
 
 @router.callback_query(F.data == "dont_collect_data")
 async def select_PrivacyPolicy(call: CallbackQuery, state: FSMContext):
@@ -88,4 +92,85 @@ async def send_Use(call: CallbackQuery, state:FSMContext):
 
 @router.callback_query(F.data == "No")
 async def if_no(call: CallbackQuery):
+<<<<<<< HEAD
     await call.message.reply("Принял")
+=======
+    await call.message.reply("Принял")
+
+@router.callback_query(F.data=='term_of_use')
+async def select_TermOfUse(call: CallbackQuery, state: FSMContext):
+    await state.set_state(DialogUse.terms_of_use)
+    await call.message.answer(text='Введите имя разаботчика:')
+
+@router.message(DialogUse.terms_of_use, F.text)
+async def get_message(message: Message, state: FSMContext):
+    await state.update_data(dev_username=message.text)
+    await message.reply(text='Введите название приложения')
+    await state.set_state(DialogUse.app_name)
+
+@router.message(DialogUse.app_name, F.text)
+async def get_message(message: Message, state: FSMContext):
+    await state.update_data(app_name=message.text)
+    await message.reply(text='Введите название email')
+    await state.set_state(DialogUse.email)
+
+@router.message(DialogUse.email, F.text)
+async def get_message(message: Message, state:FSMContext):
+    await state.update_data(email=message.text)
+    data = await state.get_data()
+    email = data["email"]
+    dev_username = data["dev_username"][0]
+    app_name = data["app_name"]
+    chat_id=data["dev_username"][1]
+    try:
+        response = requests.post(
+            f'{WEB_APP_URL}/create_document/terms_of_use??dev_username={dev_username}&app_name={app_name}&email={email}&user_id={chat_id}')
+        try:
+                response.raise_for_status()
+                response_json = response.json()
+        except requests.exceptions.HTTPError as e:
+            print(f"Ошибка: {e}")
+            await message.reply(message.from_user.id, "Произошла ошибка при обработке запроса. Пожалуйста, попробуйте еще раз.")
+            return
+        except ValueError as e:
+            print(f"Ошибка: {e}")
+            await message.reply(message.from_user.id, "Произошла ошибка при обработке ответа сервера. Пожалуйста, попробуйте еще раз.")
+            return
+    except:
+        pass
+    document_url = f'{WEB_APP_URL}{response_json["url"]}'
+    await message.reply(f"Ваша ссылка на Term Of Use: {document_url}")
+    await message.reply("Желаете создать Privacy policy?", reply_markup=create_doc)
+    await state.set_state(DialogUse.privacy_use)
+
+@router.callback_query(DialogUse.privacy_use,F.data =="Yes")
+async def send_Use(call: CallbackQuery, state:FSMContext):
+    data = await state.get_data()
+    email = data["email"]
+    dev_username = data["dev_username"][0]
+    app_name = data["app_name"]
+    chat_id=data["dev_username"][1]
+    try:
+        response = requests.post(
+            f'{WEB_APP_URL}/create_document/privacy_policy?dev_username={dev_username}&app_name={app_name}&email={email}&user_id={chat_id}')
+        try:
+                response.raise_for_status()
+                response_json = response.json()
+        except requests.exceptions.HTTPError as e:
+            print(f"Ошибка: {e}")
+            await call.message.reply("Произошла ошибка при обработке запроса. Пожалуйста, попробуйте еще раз.")
+            return
+        except ValueError as e:
+            print(f"Ошибка: {e}")
+            await call.message.reply( "Произошла ошибка при обработке ответа сервера. Пожалуйста, попробуйте еще раз.")
+            return
+    except:
+        pass
+    document_url = f'{WEB_APP_URL}{response_json["url"]}'
+    db.append_user(name=call.from_user.first_name,username=call.from_user.username, chat_id=call.from_user.id)
+    await call.message.answer(f"Ваша ссылка Privacy policy:\n{document_url}")
+
+@router.callback_query(F.data == "No")
+async def if_no(call: CallbackQuery):
+    await call.message.reply("Принял")
+>>>>>>> 97e91ba75dccee59eaf2e6b1040330f0176c1592
