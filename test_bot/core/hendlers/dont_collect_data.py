@@ -3,8 +3,9 @@ from aiogram.types import CallbackQuery,Message
 from aiogram.fsm.context import FSMContext
 from core.keyboards.inline import create_doc
 from db.db import Database
-from core.types.states import DialogPolicy
+from core.types.states import DialogPolicy,DialogUse
 
+import os
 import requests
 
 router = Router()
