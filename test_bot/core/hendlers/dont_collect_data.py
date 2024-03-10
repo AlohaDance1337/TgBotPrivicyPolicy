@@ -88,9 +88,6 @@ async def send_Use(call: CallbackQuery, state:FSMContext):
 
 @router.callback_query(F.data == "No")
 async def if_no(call: CallbackQuery):
-<<<<<<< HEAD
-    await call.message.reply("Принял")
-=======
     await call.message.reply("Принял")
 
 @router.callback_query(F.data=='term_of_use')
@@ -169,4 +166,3 @@ async def send_Use(call: CallbackQuery, state:FSMContext):
 @router.callback_query(F.data == "No")
 async def if_no(call: CallbackQuery):
     await call.message.reply("Принял")
->>>>>>> 97e91ba75dccee59eaf2e6b1040330f0176c1592
